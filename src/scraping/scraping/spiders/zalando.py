@@ -1,5 +1,5 @@
-import scrapy
 import os
+import scrapy
 
 
 class ZalandoSpider(scrapy.Spider):
