@@ -4,9 +4,13 @@ import os
 
 class AsosSpider(scrapy.Spider):
     name = "asos"
-    start_urls = [
-        'https://www.asos.com/fr/homme/chaussures-bottes-baskets/cat/?cid=4209&cr=4&page=1'
-    ]
+
+    def start_requests(self):
+        base_url = "https://www.asos.com/fr/homme/chaussures-bottes-baskets/cat/?cid=4209&cr=4&page={0}"
+        for page in range(1, 27):
+            url = base_url.format(page)
+            request = scrapy.Request(url=url, callback=self.parse)
+            yield request
 
     def parse(self, response):
         articles = response.xpath(
