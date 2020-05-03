@@ -5,6 +5,7 @@ import os
 class AsosSpider(scrapy.Spider):
     name = "asos"
 
+
     def start_requests(self):
         base_url = "https://www.asos.com/fr/homme/chaussures-bottes-baskets/cat/?cid=4209&cr=4&page={0}"
         for page in range(1, 27):
